@@ -2,6 +2,7 @@
 
 ## 用例图
 待上传docs/assets/usecase.png和源文件后，在此引用图片。
+![用例图](./assets/usecase.png)
 
 ## 角色说明
 - 报修人：提交报修工单，生成初始工单
