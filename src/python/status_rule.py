@@ -12,3 +12,4 @@ def can_transition(current: Status, target: Status) -> bool:
     if current == Status.PROCESSING and target == Status.COMPLETED:
         return True
     return False
+
