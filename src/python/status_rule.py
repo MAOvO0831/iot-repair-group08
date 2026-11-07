@@ -1,7 +1,15 @@
-"""Complete the two allowed work-order transitions."""
+from enum import Enum
 
-def can_transition(current, target):
-    # TODO: allow PENDING -> PROCESSING
-    # TODO: allow PROCESSING -> COMPLETED
-    # All other transitions must return False.
+class Status(Enum):
+    PENDING = "PENDING"
+    PROCESSING = "PROCESSING"
+    COMPLETED = "COMPLETED"
+
+
+def can_transition(current: Status, target: Status) -> bool:
+    if current == Status.PENDING and target == Status.PROCESSING:
+        return True
+    if current == Status.PROCESSING and target == Status.COMPLETED:
+        return True
     return False
+

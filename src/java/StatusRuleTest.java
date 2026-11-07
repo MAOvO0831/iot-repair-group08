@@ -23,4 +23,4 @@ public class StatusRuleTest {
         System.out.println("Summary: " + passed + "/4 passed");
         System.exit(passed == 4 ? 0 : 1);
     }
-}
+}     
