@@ -19,3 +19,4 @@ if __name__ == "__main__":
 
     print(f"Summary: {passed}/4 passed")
     exit(0 if passed == 4 else 1)
+
