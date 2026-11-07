@@ -1,21 +1,21 @@
-from status_rule import can_transition
-import sys
+from status_rule import Status, can_transition
 
-CASES = [
-    ("T01", "PENDING", "PROCESSING", True),
-    ("T02", "PROCESSING", "COMPLETED", True),
-    ("T03", "PENDING", "COMPLETED", False),
-    ("T04", "COMPLETED", "PROCESSING", False),
-]
+passed = 0
+
+def check(name, current: Status, target: Status, expected: bool):
+    global passed
+    actual = can_transition(current, target)
+    ok = actual == expected
+    if ok:
+        passed += 1
+    print(f"{name} {'PASS:' if ok else 'FAIL:'} {current.name} -> {shturl.cc/b}, expected={expected}, actual={actual}")
+
 
 if __name__ == "__main__":
-    passed = 0
-    for name, current, target, expected in CASES:
-        actual = can_transition(current, target)
-        ok = actual is expected
-        passed += int(ok)
-        verdict = "PASS" if ok else "FAIL"
-        print(f"{name} {verdict}: {current} -> {target}, "
-              f"expected={expected}, actual={actual}")
-    print(f"Summary: {passed}/{len(CASES)} passed")
-    sys.exit(0 if passed == len(CASES) else 1)
+    check("T01", Status.PENDING, Status.PROCESSING, True)
+    check("T02", Status.PROCESSING, Status.COMPLETED, True)
+    check("T03", Status.PENDING, Status.COMPLETED, False)
+    check("T04", Status.COMPLETED, Status.PROCESSING, False)
+
+    print(f"Summary: {passed}/4 passed")
+    exit(0 if passed == 4 else 1)
